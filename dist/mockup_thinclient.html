@@ -183,6 +183,13 @@
       };
 
       var handleOpenUrlInSystemBrowser = function (msg) {
+        function onClickOpenPopupWindow() {
+          var url = msg.parameter.url;
+          window.open(url, 'New Window', 'width=800,height=600,resizable=yes,location=no,toolbar=no,menubar=no,status=no');
+        }
+
+        onClickOpenPopupWindow();
+
         return {
           code: 0, // 0: success, 1: generic error
           requestId: msg.requestId,
@@ -272,10 +279,11 @@
         var data = {
           id: "000 0000 0000",
           conferenceId: "FB4C3EF1-64CA-4AA9-9F02-E4D9A02DAF05",
+          instanceId: "b32a60d7-e552-543d-8801-85e832a5ee5f",
           title: "iframe meeting title",
           startTime: "2021-04-29T14:00:00.000Z", // new Date('2021-04-29T14:00:00.000Z')
           endTime: "2021-04-29T14:00:00.000Z", // Date.parse('2021-04-29T14:00:00.000Z');
-          userRoles: ["HOST", "PANELIST"],
+          userRoles: ["HOST", "PANELIST", "INTERPRETER"],
           meetingType: "MEETING",
           url: 'https://locus-a.wbx2.com/locus/api/v1/loci/714D7129-9785-4C5C-87B7-0FC538F3ED30/',
           // derivedId: '03BA48A1-80A3-4779-B32C-3107E92029B1'
