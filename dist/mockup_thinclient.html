@@ -23,9 +23,11 @@
     <h3>Mockup ThinClient with Apps iframe</h3>
     <h4>Send Events to SDK:</h4>
     <button onclick="sendEventsToSDK()">Send All Events</button>
-    <button onclick="sendEventsToSDKTheme()">
-      Send application:themeChanged
-    </button>
+    <button onclick="sendEventsToSDKTheme()">Send application:themeChanged</button>
+    <button onclick="sendEventsToSDKApplicationShareStateChanged()">Send application:shareStateChanged</button>
+    <button onclick="sendEventsToSDKApplicationDisplayContextChanged()">Send application:displayContextChanged</button>
+    <button onclick="sendEventsToSDKMeetingInfoChanged()">Send meeting:infoChanged</button>
+    <button onclick="sendEventsToSDKMeetingRoleChanged()">Send meeting:roleChanged</button>
     <button onclick="sendEventsMeetingUrl()">Send meeting.url Events</button>
     <span>As Phase1: <input type="checkbox" name="asPhase1" id="asPhase1" /></span>
 
@@ -61,11 +63,32 @@
         iframeSendMessage(makeMeetingRoleChanged());
         iframeSendMessage(makeSpaceInfoChanged());
       }
+      function sendEventsToSDKMeetingInfoChanged() {
+        iframeSendMessage(makeMeetingInfoChanged());
+      }
+      function sendEventsToSDKMeetingRoleChanged() {
+        iframeSendMessage(makeMeetingRoleChanged());
+      }
+
+      function sendEventsToSDKApplicationShareStateChanged() {
+        iframeSendMessage(makeEventApplicationShareStateChanged());
+      }
+      function sendEventsToSDKApplicationDisplayContextChanged() {
+        iframeSendMessage(makeEventApplicationDisplayContextChanged());
+      }
+
+      function sendEventsToSDKTheme() {
+        iframeSendMessage(makeEventApplicationThemeChanged());
+      }
+
       function sendEventsToSDKTheme() {
         iframeSendMessage(makeEventApplicationThemeChanged());
       }
       function sendEventsMeetingUrl() {
         iframeSendMessage(makeEventApplicationMeetingUrlChanged());
+      }
+      function sendEventsToSDKSpaceInfoChanged() {
+        iframeSendMessage(makeSpaceInfoChanged());
       }
 
       var asPhase1 = document.getElementById('asPhase1');
@@ -454,6 +477,7 @@
       var makeSpaceInfoChanged = function (msg) {
         var data = {
           id: "space 101",
+          derivedId: "111-111-1111-1111",
           title: "space mockup title",
         };
         return {

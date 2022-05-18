@@ -121,11 +121,12 @@
         app.onReady().then(function () {
           print("onReady done");
           changeTheme(app.theme);
-          app.on("application:themeChanged", function (theme) {
-            changeTheme(theme);
-            console.log("Event application:themeChanged theme=" + theme);
-            print("Event application:themeChanged theme=" + theme);
-          });
+          addEvents();
+          // app.on("application:themeChanged", function (theme) {
+          //   changeTheme(theme);
+          //   console.log("Event application:themeChanged theme=" + theme);
+          //   print("Event application:themeChanged theme=" + theme);
+          // });
         });
       }, 500);
 
