@@ -149,8 +149,11 @@
             }, 2000);
             return;
             break;
-          case "application.getRedirectUrl":
-            res = handleGetRedirectUrl(msg);
+          case "application.getStateForOAuth":
+            res = handleGetStateForOAuth(msg);
+            break;
+          case "application.initiateSystemBrowserOAuth":
+            res = handleInitiateSystemBrowserOAuth(msg);
             break;
           case "application.performance":
             res = handlePerformance(msg);
@@ -161,9 +164,6 @@
             break;
           case "application.clearShareUrl":
             res = handleClearShareUrl(msg);
-            break;
-          case "application.authenticate":
-            res = handleAuthenticate(msg);
             break;
           case "application.openUrlInSystemBrowser":
             res = handleOpenUrlInSystemBrowser(msg);
@@ -197,11 +197,11 @@
         };
       };
 
-      var handleAuthenticate = function (msg) {
+      var handleInitiateSystemBrowserOAuth = function (msg) {
         return {
           code: 0, // 0: success, 1: generic error
           requestId: msg.requestId,
-          data: { authenticationCode: "some.authentication.com" },
+          data: { authenticationCode: "this is authenticationCode" },
         };
       };
 
@@ -236,11 +236,11 @@
         };
       };
 
-      var handleGetRedirectUrl = function (msg) {
+      var handleGetStateForOAuth = function (msg) {
         return {
           code: 0, // 0: success, 1: generic error
           requestId: msg.requestId,
-          data: { redirectUrl: "the.redirect.url" },
+          data: { slotState: "this is slotState" },
         };
       };
       var handleListen = function (msg) {
