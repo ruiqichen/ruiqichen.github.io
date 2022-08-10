@@ -149,9 +149,6 @@
             }, 2000);
             return;
             break;
-          case "application.getStateForOAuth":
-            res = handleGetStateForOAuth(msg);
-            break;
           case "application.initiateSystemBrowserOAuth":
             res = handleInitiateSystemBrowserOAuth(msg);
             break;
@@ -229,21 +226,6 @@
       };
 
       var handleSetShareUrl = function (msg) {
-        return {
-          code: 0, // 0: success, 1: generic error
-          requestId: msg.requestId,
-          data: {},
-        };
-      };
-
-      var handleGetStateForOAuth = function (msg) {
-        return {
-          code: 0, // 0: success, 1: generic error
-          requestId: msg.requestId,
-          data: { slotState: "this is slotState" },
-        };
-      };
-      var handleListen = function (msg) {
         return {
           code: 0, // 0: success, 1: generic error
           requestId: msg.requestId,
@@ -333,14 +315,14 @@
       var handleApplicationInitialize = function (msg, force) {
         var data = {
           application: {
-            about: "Webex App, Version:41.10.0.master.17",
+            about: "Webex App, Version:99.99.0",
             capabilities: ['test'],
             deviceType: "DESKTOP",
             displayContext: "test",
             isPrivateDataAvailable: true,
             isShared: false,
             language: "en",
-            sdkVersion: "1.1.*",
+            sdkVersion: "1.5.0",
             theme: "LIGHT",
           },
         };
