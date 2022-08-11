@@ -1,0 +1,6 @@
+{
+  "short_name": "Timer",
+  "name": "Timer",
+  "start_url": ".",
+  "display": "standalone"
+}
