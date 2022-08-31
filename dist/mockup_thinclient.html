@@ -28,6 +28,7 @@
     <button onclick="sendEventsToSDKApplicationDisplayContextChanged()">Send application:displayContextChanged</button>
     <button onclick="sendEventsToSDKMeetingInfoChanged()">Send meeting:infoChanged</button>
     <button onclick="sendEventsToSDKMeetingRoleChanged()">Send meeting:roleChanged</button>
+    <button onclick="sendEventsToSDKUserInfoChanged()">Send user:infoChanged</button>
     <button onclick="sendEventsMeetingUrl()">Send meeting.url Events</button>
     <span>As Phase1: <input type="checkbox" name="asPhase1" id="asPhase1" /></span>
 
@@ -68,6 +69,9 @@
       }
       function sendEventsToSDKMeetingRoleChanged() {
         iframeSendMessage(makeMeetingRoleChanged());
+      }
+      function sendEventsToSDKUserInfoChanged() {
+        iframeSendMessage(makeUserInfoChanged());
       }
 
       function sendEventsToSDKApplicationShareStateChanged() {
@@ -451,6 +455,22 @@
         return {
           type: "event",
           request: "meeting:roleChanged",
+          requestId: null,
+          data: data,
+        };
+      };
+
+      var makeUserInfoChanged = function (msg) {
+        var data = {
+          "id": "FB4C3EF1-64CA-4AA9-9F02-E4D9A02DAF05",
+          "orgId": "B3F426D7-AED1-46C6-9B70-6091A9D88A11",
+          "email": "johnd@email.com",
+          "displayName": "My New Name",
+          "token": "X&49394732342dsfDFSDFS....",
+        };
+        return {
+          type: "event",
+          request: "user:infoChanged",
           requestId: null,
           data: data,
         };
