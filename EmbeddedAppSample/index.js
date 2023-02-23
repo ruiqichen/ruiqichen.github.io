@@ -76,8 +76,6 @@ function handleSetPresentationUrl() {
     .getMeeting()
     .then(function (meeting) {
       console.log("Promise getMeeting success", JSON.stringify(meeting));
-      log("Promise getMeeting success", JSON.stringify(meeting));
-      log("Meeting States", meeting);
 
       var url = document.getElementById("presentationUrl").value || "";
       var title = document.getElementById("presentationTitle").value || "";
@@ -91,7 +89,6 @@ function handleSetPresentationUrl() {
         .setPresentationUrl(url, title, shareOptimizationMode, includeAudio)
         .then(function (res) {
           console.log("Promise setPresentationUrl success", JSON.stringify(res));
-          log("Promise setPresentationUrl success", JSON.stringify(res));
         })
         .catch(function (reason) {
           console.error("setPresentationUrl: fail reason=" + reason);
