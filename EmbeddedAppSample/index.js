@@ -76,8 +76,8 @@ function handleSetPresentationUrl() {
     .getMeeting()
     .then(function (meeting) {
       console.log("Promise getMeeting success", JSON.stringify(meeting));
-      print("Promise getMeeting success", JSON.stringify(meeting));
-      printState("Meeting States", meeting);
+      log("Promise getMeeting success", JSON.stringify(meeting));
+      log("Meeting States", meeting);
 
       var url = document.getElementById("presentationUrl").value || "";
       var title = document.getElementById("presentationTitle").value || "";
@@ -91,17 +91,17 @@ function handleSetPresentationUrl() {
         .setPresentationUrl(url, title, shareOptimizationMode, includeAudio)
         .then(function (res) {
           console.log("Promise setPresentationUrl success", JSON.stringify(res));
-          print("Promise setPresentationUrl success", JSON.stringify(res));
+          log("Promise setPresentationUrl success", JSON.stringify(res));
         })
         .catch(function (reason) {
           console.error("setPresentationUrl: fail reason=" + reason);
-          print("setPresentationUrl: fail reason=" + reason);
+          log("setPresentationUrl: fail reason=" + reason);
         });
 
     })
     .catch(function (reason) {
       console.error("getMeeting: fail reason=" + reason);
-      print("getMeeting: fail reason=" + reason, "ERROR");
+      log("getMeeting: fail reason=" + reason, "ERROR");
     });
 }
 
@@ -113,23 +113,20 @@ function handleClearPresentationUrl() {
     .getMeeting()
     .then(function (meeting) {
       console.log("Promise getMeeting success", JSON.stringify(meeting));
-      print("Promise getMeeting success", JSON.stringify(meeting));
-      printState("Meeting States", meeting);
 
       meeting
         .clearPresentationUrl()
         .then(function (res) {
           console.log("Promise setPresentationUrl success", JSON.stringify(res));
-          print("Promise setPresentationUrl success", JSON.stringify(res));
         })
         .catch(function (reason) {
           console.error("setPresentationUrl: fail reason=" + reason);
-          print("setPresentationUrl: fail reason=" + reason);
+          log("setPresentationUrl: fail reason=" + reason);
         });
 
     })
     .catch(function (reason) {
       console.error("getMeeting: fail reason=" + reason);
-      print("getMeeting: fail reason=" + reason, "ERROR");
+      log("getMeeting: fail reason=" + reason, "ERROR");
     });
 }
