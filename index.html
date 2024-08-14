@@ -1,1 +1,51 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><meta name="theme-color" content="#000000"/><meta name="description" content="Timer Embedded App"/><link rel="manifest" href="/manifest.json"/><script id="webex-embedded-app-sdk" src="/static/js/webex-embedded-app-sdk.js" defer="defer"></script><title>Timer</title><script defer="defer" src="/static/js/main.7608525e.js"></script><link href="/static/css/main.1e4e09b2.css" rel="stylesheet"></head><body><noscript>You need to enable JavaScript to run this app.</noscript><div id="root"></div><audio hidden id="timer-countdown"><source src="/static/media/audio/timer_countdown.mp3" type="audio/mpeg"/></audio><audio hidden id="timer-end"><source src="/static/media/audio/timer_end.mp3" type="audio/mpeg"/></audio></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工程模式密码生成器</title>
+</head>
+<body>
+    <input type="text" id="date" placeholder="Enter date (YYYY-MM-DD)">
+    <button id="calculateKey">Calculate Key</button>
+    <input type="text" id="keyResult" readonly>
+    <script>
+        var today = new Date();
+        var currentDate = today.toISOString().split('T')[0];
+        document.getElementById('date').value = currentDate;
+
+        const constants = [213518, 658035, 235657, 567534, 647825, 234700, 127347, 648924, 733782, 553456];
+
+        function calculateKey(cellValue) {
+            const lastNumber = cellValue % 10;
+            const key = Math.abs(cellValue + constants[lastNumber]);
+            const keyStr = key.toString().slice(-6);
+            return keyStr;
+        }
+
+        function convertDateToInt(dateStr) {
+            const [year, month, day] = dateStr.split('-');
+            return parseInt(year.slice(2) + month + day, 10);
+        }
+
+        document.getElementById('calculateKey').addEventListener('click', function() {
+            const date = document.getElementById('date').value;
+            const keyResult = document.getElementById('keyResult');
+            let cellValue;
+
+            if (date) {
+                cellValue = convertDateToInt(date);
+                if (isNaN(cellValue)) {
+                    alert("Invalid input. Please provide a date in the format YYYY-MM-DD.");
+                    return;
+                }
+            } else {
+                alert("No input provided. Using default value.");
+                cellValue = 240813;
+            }
+
+            const keyStr = calculateKey(cellValue);
+            keyResult.value = keyStr;
+        });
+    </script>
+</body>
+</html>
