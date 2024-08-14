@@ -2,11 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="water.min.css" />
     <title>工程模式密码生成器</title>
+    <style>
+        @media only screen and (max-width: 600px) {
+            /* Add your mobile-specific styles here */
+            body {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 <body>
     <input type="text" id="date" placeholder="Enter date (YYYY-MM-DD)">
+    <br>
+    <br>
     <button id="calculateKey">Calculate Key</button>
+    <br>
+    <br>
     <input type="text" id="keyResult" readonly>
     <script>
         var today = new Date();
