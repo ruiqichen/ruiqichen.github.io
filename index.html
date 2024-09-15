@@ -4,22 +4,38 @@
     <meta charset="UTF-8">
     <title>工程模式密码生成器</title>
     <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
         @media only screen and (max-width: 600px) {
-            /* Add your mobile-specific styles here */
             body {
-                font-size: 14px;
+                font-size: 18px;
+            }
+            .container {
+                width: 90%;
+            }
+            input, button {
+                font-size: 16px;
+                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
-    <input type="text" id="date" placeholder="Enter date (YYYY-MM-DD)">
-    <br>
-    <br>
-    <button id="calculateKey">Calculate Key</button>
-    <br>
-    <br>
-    <input type="text" id="keyResult" readonly>
+    <div class="container">
+        <input type="text" id="date" placeholder="Enter date (YYYY-MM-DD)" style="text-align: center;">
+        <br><br>
+        <button id="calculateKey">Calculate Key</button>
+        <br><br>
+        <input type="text" id="keyResult" readonly style="text-align: center;">
+    </div>
     <script>
         var today = new Date();
         var currentDate = today.toISOString().split('T')[0];
