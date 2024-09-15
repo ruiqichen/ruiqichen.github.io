@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>工程模式密码生成器</title>
+    <link rel="stylesheet" href="water.min.css" async />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             display: flex;
@@ -10,20 +12,28 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            font-size: 18px; /* Default font size for better readability */
         }
         .container {
             text-align: center;
+            width: 100%;
+            max-width: 400px; /* Limit the width for better readability */
+            padding: 20px;
+        }
+        input, button {
+            width: 100%;
+            font-size: 18px;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
         }
         @media only screen and (max-width: 600px) {
             body {
-                font-size: 18px;
-            }
-            .container {
-                width: 90%;
+                font-size: 20px; /* Increase font size for smaller screens */
             }
             input, button {
-                font-size: 16px;
-                padding: 10px;
+                font-size: 20px;
+                padding: 12px;
             }
         }
     </style>
