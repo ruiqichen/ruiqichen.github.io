@@ -40,11 +40,22 @@
 </head>
 <body>
     <div class="container">
-        <input type="date" id="date" style="text-align: center;">
-        <br><br>
-        <button id="calculateKey">Calculate Key</button>
-        <br><br>
-        <input type="text" id="keyResult" readonly style="text-align: center;">
+        <section style="margin-bottom: 32px; border: 1px solid #ccc; border-radius: 8px; padding: 16px;">
+            <h2 style="margin-top:0;">工程模式密码</h2>
+            <input type="date" id="date" style="text-align: center;">
+            <br>
+            <button id="calculateKey">生成密码</button>
+            <br>
+            <input type="text" id="keyResult" readonly style="text-align: center;">
+        </section>
+        <section style="border: 1px solid #ccc; border-radius: 8px; padding: 16px;">
+            <h2 style="margin-top:0;">加密项</h2>
+            <input type="text" id="encryptInput" maxlength="4" pattern="\d{4}" placeholder="请输入4位数字" style="text-align: center;">
+            <br>
+            <button id="generateEncrypt">生成密码</button>
+            <br>
+            <input type="text" id="encryptResult" readonly style="text-align: center;">
+        </section>
     </div>
     <script>
         var today = new Date();
@@ -86,6 +97,31 @@
         });
 
         document.getElementById('calculateKey').click();
+        // 加密项密码生成逻辑
+        function generateEncryptPassword(input) {
+            if (!/^\d{4}$/.test(input)) {
+                return '';
+            }
+            let arr = input.split('');
+            let res = '';
+            // 第一位+"A"
+            res += arr[0] + 'A';
+            // 第二位+"b"
+            res += arr[1] + 'b';
+            // 第三位+"c"或"C"
+            res += arr[2] + (parseInt(arr[2]) % 2 === 0 ? 'C' : 'c');
+            // 第四位+"d"或"D"
+            res += arr[3] + (parseInt(arr[3]) % 2 === 0 ? 'D' : 'd');
+            // 固定追加@@
+            res += '@@';
+            return res;
+        }
+
+        document.getElementById('generateEncrypt').addEventListener('click', function() {
+            const input = document.getElementById('encryptInput').value;
+            const result = generateEncryptPassword(input);
+            document.getElementById('encryptResult').value = result || '请输入4位数字';
+        });
     </script>
 </body>
 </html>
