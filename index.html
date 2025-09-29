@@ -50,7 +50,7 @@
         </section>
         <section style="border: 1px solid #ccc; border-radius: 8px; padding: 16px;">
             <h2 style="margin-top:0;">加密项</h2>
-            <input type="text" id="encryptInput" maxlength="4" pattern="\d{4}" placeholder="请输入4位数字" style="text-align: center;">
+            <input type="text" id="encryptInput" maxlength="4" pattern="\d{4}" placeholder="请输入4位随机数" style="text-align: center;">
             <br>
             <button id="generateEncrypt">生成密码</button>
             <br>
@@ -120,7 +120,7 @@
         document.getElementById('generateEncrypt').addEventListener('click', function() {
             const input = document.getElementById('encryptInput').value;
             const result = generateEncryptPassword(input);
-            document.getElementById('encryptResult').value = result || '请输入4位数字';
+            document.getElementById('encryptResult').value = result || '请输入4位随机数';
         });
     </script>
 </body>
