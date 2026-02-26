@@ -105,16 +105,16 @@
             }
             let arr = input.split('');
             let res = '';
-            // 第一位+"A"
-            res += arr[0] + 'A';
-            // 第二位+"b"
-            res += arr[1] + 'b';
-            // 第三位+"c"或"C"
-            res += arr[2] + (parseInt(arr[2]) % 2 === 0 ? 'C' : 'c');
-            // 第四位+"d"或"D"
-            res += arr[3] + (parseInt(arr[3]) % 2 === 0 ? 'D' : 'd');
-            // 固定追加@@
-            res += '@@';
+            // 第一位+"X"
+            res += arr[0] + 'X';
+            // 第二位+"M"
+            res += arr[1] + 'M';
+            // 第三位+"p"或"P"
+            res += arr[2] + (parseInt(arr[2]) % 2 === 0 ? 'P' : 'p');
+            // 第四位+"q"或"Q"
+            res += arr[3] + (parseInt(arr[3]) % 2 === 0 ? 'Q' : 'q');
+            // 固定追加##
+            res += '##';
             return res;
         }
 
