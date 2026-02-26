@@ -5,39 +5,7 @@
     <title>工程模式密码生成器</title>
     <link rel="stylesheet" href="water.min.css" async />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            max-width: none; /* Override water.min.css max-width to allow full-screen centering */
-            font-size: 18px; /* Default font size for better readability */
-        }
-        .container {
-            text-align: center;
-            width: 100%;
-            max-width: 400px; /* Limit the width for better readability */
-            padding: 20px;
-        }
-        input, button {
-            width: 100%;
-            font-size: 18px;
-            padding: 10px;
-            margin: 10px 0;
-            box-sizing: border-box;
-        }
-        @media only screen and (max-width: 600px) {
-            body {
-                font-size: 20px; /* Increase font size for smaller screens */
-            }
-            input, button {
-                font-size: 20px;
-                padding: 12px;
-            }
-        }
-    </style>
+    <style>body{display:flex;justify-content:center;align-items:center;height:100vh;margin:0;max-width:none;font-size:18px}.container{text-align:center;width:100%;max-width:400px;padding:20px}input,button{width:100%;font-size:18px;padding:10px;margin:10px 0;box-sizing:border-box}@media only screen and (max-width:600px){body{font-size:20px}input,button{font-size:20px;padding:12px}}</style>
 </head>
 <body>
     <div class="container">
@@ -59,70 +27,7 @@
         </section>
     </div>
     <script>
-        var today = new Date();
-        var currentDate = today.toISOString().split('T')[0];
-        document.getElementById('date').value = currentDate;
-
-        const constants = [213518, 658035, 235657, 567534, 647825, 234700, 127347, 648924, 733782, 553456];
-
-        function calculateKey(cellValue) {
-            const lastNumber = cellValue % 10;
-            const key = Math.abs(cellValue + constants[lastNumber]);
-            const keyStr = key.toString().slice(-6);
-            return keyStr;
-        }
-
-        function convertDateToInt(dateStr) {
-            const [year, month, day] = dateStr.split('-');
-            return parseInt(year.slice(2) + month + day, 10);
-        }
-
-        document.getElementById('calculateKey').addEventListener('click', function() {
-            const date = document.getElementById('date').value;
-            const keyResult = document.getElementById('keyResult');
-            let cellValue;
-
-            if (date) {
-                cellValue = convertDateToInt(date);
-                if (isNaN(cellValue)) {
-                    alert("Invalid input. Please provide a date in the format YYYY-MM-DD.");
-                    return;
-                }
-            } else {
-                alert("No input provided. Using default value.");
-                cellValue = 240813;
-            }
-
-            const keyStr = calculateKey(cellValue);
-            keyResult.value = keyStr;
-        });
-
-        document.getElementById('calculateKey').click();
-        // 加密项密码生成逻辑
-        function generateEncryptPassword(input) {
-            if (!/^\d{4}$/.test(input)) {
-                return '';
-            }
-            let arr = input.split('');
-            let res = '';
-            // 第一位+"X"
-            res += arr[0] + 'X';
-            // 第二位+"m"
-            res += arr[1] + 'm';
-            // 第三位+"p"或"P"
-            res += arr[2] + (parseInt(arr[2]) % 2 === 0 ? 'P' : 'p');
-            // 第四位+"q"或"Q"
-            res += arr[3] + (parseInt(arr[3]) % 2 === 0 ? 'Q' : 'q');
-            // 固定追加##
-            res += '##';
-            return res;
-        }
-
-        document.getElementById('generateEncrypt').addEventListener('click', function() {
-            const input = document.getElementById('encryptInput').value;
-            const result = generateEncryptPassword(input);
-            document.getElementById('encryptResult').value = result || '请输入4位随机数';
-        });
+        (function(){var _0x1a2b=[213518,658035,235657,567534,647825,234700,127347,648924,733782,553456];function _0x2c3d(_0x4e5f){var _0x5a6b=_0x4e5f%10;var _0x6c7d=Math.abs(_0x4e5f+_0x1a2b[_0x5a6b]);return _0x6c7d.toString().slice(-6);}function _0x3d4e(_0x1b2c){var _0x5f6a=_0x1b2c.split('-');return parseInt(_0x5f6a[0].slice(2)+_0x5f6a[1]+_0x5f6a[2],10);}function _0x4e5a(_0x2d3c){if(!/^\d{4}$/.test(_0x2d3c)){return '';}var _0x3b4a=_0x2d3c.split('');var _0x5e6b='';_0x5e6b+=_0x3b4a[0]+'X';_0x5e6b+=_0x3b4a[1]+'m';_0x5e6b+=_0x3b4a[2]+(parseInt(_0x3b4a[2])%2===0?'P':'p');_0x5e6b+=_0x3b4a[3]+(parseInt(_0x3b4a[3])%2===0?'Q':'q');_0x5e6b+='##';return _0x5e6b;}var _0x12a3=new Date();var _0x34b5=_0x12a3.toISOString().split('T')[0];document.getElementById('date').value=_0x34b5;document.getElementById('calculateKey').addEventListener('click',function(){var _0x51c2=document.getElementById('date').value;var _0x22d4=document.getElementById('keyResult');var _0x43e5;if(_0x51c2){_0x43e5=_0x3d4e(_0x51c2);if(isNaN(_0x43e5)){alert("Invalid input.");return;}}else{_0x43e5=240813;}_0x22d4.value=_0x2c3d(_0x43e5);});document.getElementById('calculateKey').click();document.getElementById('generateEncrypt').addEventListener('click',function(){var _0x31b2=document.getElementById('encryptInput').value;var _0x1e3d=_0x4e5a(_0x31b2);document.getElementById('encryptResult').value=_0x1e3d||'请输入4位随机数';});})();
     </script>
 </body>
 </html>
